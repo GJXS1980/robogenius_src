@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'scara_rivet_base_joint', 'scara_1_joint', 'scara_2_joint','scara_3_joint','scara_4_joint','scara_dualgrip_connection_joint',]

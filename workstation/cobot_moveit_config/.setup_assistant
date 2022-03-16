@@ -1,0 +1,11 @@
+moveit_setup_assistant_config:
+  URDF:
+    package: agv_vehicle
+    relative_path: urdf/agv_arm.urdf.xacro
+    xacro_args: ""
+  SRDF:
+    relative_path: config/agv_arm.srdf
+  CONFIG:
+    author_name: Kairong Wu
+    author_email: Diode_wkr@163.com
+    generated_timestamp: 1603372324

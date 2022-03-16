@@ -1,0 +1,14 @@
+<launch>
+  <arg name="map_file" default="$(find turtlebot3_navigation)/maps/station.yaml"/>
+  <arg name="open_rviz" default="true"/>
+
+  <include file="$(find cobot_moveit_config)/launch/demo_gazebo.launch">
+  </include>
+
+  <include file="$(find turtlebot3_navigation)/launch/agv_navigation.launch">
+  </include>
+
+  <include file="$(find turtlebot3_navigation)/launch/move_nav.launch">
+  </include>
+
+</launch>

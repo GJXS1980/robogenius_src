@@ -1,0 +1,15 @@
+material box_tag/red
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture red.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

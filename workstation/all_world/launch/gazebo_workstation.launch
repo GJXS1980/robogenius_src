@@ -1,0 +1,60 @@
+
+<launch>
+
+  <arg name="paused" default="true"/>
+  <arg name="gazebo_gui" default="true"/>
+  <arg name="urdf_path" default="$(find scara)/urdf/scara.urdf"/>
+  <param name="robot_description" textfile="$(arg urdf_path)" />
+
+  <!--<include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <arg name="world_name" default="$(find all_world)/worlds/workstation.world"/>
+    <arg name="paused" value="$(arg paused)"/>
+    <arg name="gui" value="$(arg gazebo_gui)"/>
+  </include>-->
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <include file="$(find scara_operation)/launch/operation_control.launch" /> 
+
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+
+</launch>
+
+<!-- [ INFO] [1625563133.198826500]: gazebo_ros_control plugin is waiting for 
+model URDF in parameter [robot_description] on the ROS param server. -->
+
+<!--world_gazebo.launch-->
+<!-- <launch>
+
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="world_name" value="$(find all_world)/worlds/workstation.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+  </include>
+
+  <param name="robot_description" command="$(find xacro)/xacro -1-inorder $(find turtlebot3_description)/urdf/turtlebot3_waffle.urdf.xacro" /> 
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+
+</launch> -->

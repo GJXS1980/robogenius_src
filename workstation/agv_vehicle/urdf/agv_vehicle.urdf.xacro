@@ -1,0 +1,688 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<robot name="agv_vehicle" xmlns:xacro="http://ros.org/wiki/xacro" >
+
+  <xacro:include filename="$(find agv_vehicle)/urdf/common_properties.xacro"/>
+  <xacro:include filename="$(find agv_vehicle)/urdf/agv_vehicle.gazebo.xacro"/>
+
+  <link name="base_footprint"/>
+  <joint name="base_joint" type="fixed">
+    <parent link="base_footprint"/>
+    <child link="base_link" />
+    <origin xyz="0 0 0.010" rpy="0 0 0"/>
+  </joint>
+
+
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.011337 0.0002178 0.074729"
+        rpy="0 0 0" />
+      <mass
+        value="26.01" />
+      <inertia
+        ixx="0.55125"
+        ixy="-0.00023371"
+        ixz="-0.0035396"
+        iyy="1.0618"
+        iyz="-2.8551E-05"
+        izz="1.5053" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_base.STL" />
+      </geometry>
+      <material name="pink"/>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="agv_leftwheel">
+    <inertial>
+      <origin
+        xyz="4.7644E-07 0.031408 -1.4108E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.80487" />
+      <inertia
+        ixx="0.0012651"
+        ixy="-1.0197E-08"
+        ixz="1.5643E-10"
+        iyy="0.0022826"
+        iyz="3.0196E-09"
+        izz="0.0012651" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_leftwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_leftwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_leftwheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.1695 -0.023"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_leftwheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="agv_rightwheel">
+    <inertial>
+      <origin
+        xyz="-1.4483E-07 -0.031408 4.7531E-07"
+        rpy="0 0 0" />
+      <mass
+        value="0.80487" />
+      <inertia
+        ixx="0.0012651"
+        ixy="-3.0997E-09"
+        ixz="1.5483E-10"
+        iyy="0.0022826"
+        iyz="1.0173E-08"
+        izz="0.0012651" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_rightwheel.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.75294 0.75294 0.75294 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_rightwheel.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_rightwheel_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.1695 -0.023"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_rightwheel" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="agv_casterwheel_11">
+    <inertial>
+      <origin
+        xyz="0.015124 0.00018551 -0.027117"
+        rpy="0 0 0" />
+      <mass
+        value="0.029345" />
+      <inertia
+        ixx="1.6485E-05"
+        ixy="-6.4477E-09"
+        ixz="3.8454E-06"
+        iyy="1.697E-05"
+        iyz="4.7562E-08"
+        izz="1.6895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_11.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.78039 0.76078 0.74118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_11.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_11_joint"
+    type="continuous">
+    <origin
+      xyz="0.25 0.16 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_casterwheel_11" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="agv_casterwheel_12">
+    <inertial>
+      <origin
+        xyz="-6.1062E-16 0.017 -1.6237E-15"
+        rpy="0 0 0" />
+      <mass
+        value="0.10593" />
+      <inertia
+        ixx="4.2514E-05"
+        ixy="-3.2293E-21"
+        ixz="3.2662E-21"
+        iyy="7.4377E-05"
+        iyz="-3.0247E-18"
+        izz="4.2514E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_12.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_12.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_12_joint"
+    type="continuous">
+    <origin
+      xyz="0.033206 -0.016594 -0.0615"
+      rpy="0 0 0.012273" />
+    <parent
+      link="agv_casterwheel_11" />
+    <child
+      link="agv_casterwheel_12" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="agv_casterwheel_21">
+    <inertial>
+      <origin
+        xyz="0.015122 0.00034602 -0.027117"
+        rpy="0 0 0" />
+      <mass
+        value="0.029345" />
+      <inertia
+        ixx="1.6485E-05"
+        ixy="-1.1605E-08"
+        ixz="3.8447E-06"
+        iyy="1.697E-05"
+        iyz="8.8399E-08"
+        izz="1.6895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_21.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.78039 0.76078 0.74118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_21.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_21_joint"
+    type="continuous">
+    <origin
+      xyz="0.25 -0.16 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_casterwheel_21" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="agv_casterwheel_22">
+    <inertial>
+      <origin
+        xyz="-0.00038904 0.016996 -1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.10593" />
+      <inertia
+        ixx="4.253E-05"
+        ixy="-7.29E-07"
+        ixz="1.2662E-21"
+        iyy="7.436E-05"
+        iyz="-6.4689E-21"
+        izz="4.2514E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_22.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_22.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_22_joint"
+    type="continuous">
+    <origin
+      xyz="0.03338 -0.01624 -0.0615"
+      rpy="0 0 0" />
+    <parent
+      link="agv_casterwheel_21" />
+    <child
+      link="agv_casterwheel_22" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="agv_casterwheel_31">
+    <inertial>
+      <origin
+        xyz="0.01512 0.00041523 -0.027117"
+        rpy="0 0 0" />
+      <mass
+        value="0.029345" />
+      <inertia
+        ixx="1.6485E-05"
+        ixy="-1.3932E-08"
+        ixz="3.8443E-06"
+        iyy="1.697E-05"
+        iyz="1.0596E-07"
+        izz="1.6895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_31.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.78039 0.76078 0.74118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_31.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_31_joint"
+    type="continuous">
+    <origin
+      xyz="-0.25 0.16 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_casterwheel_31" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="agv_casterwheel_32">
+    <inertial>
+      <origin
+        xyz="-0.00046678 0.016994 1.3878E-17"
+        rpy="0 0 0" />
+      <mass
+        value="0.10593" />
+      <inertia
+        ixx="4.2538E-05"
+        ixy="-8.7457E-07"
+        ixz="4.1031E-21"
+        iyy="7.4353E-05"
+        iyz="-2.7645E-21"
+        izz="4.2514E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_32.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_32.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_32_joint"
+    type="continuous">
+    <origin
+      xyz="0.033454 -0.016087 -0.0615"
+      rpy="0 0 0" />
+    <parent
+      link="agv_casterwheel_31" />
+    <child
+      link="agv_casterwheel_32" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="agv_casterwheel_41">
+    <inertial>
+      <origin
+        xyz="0.015125 -0.00011453 -0.027117"
+        rpy="0 0 0" />
+      <mass
+        value="0.029345" />
+      <inertia
+        ixx="1.6485E-05"
+        ixy="3.1032E-09"
+        ixz="3.8456E-06"
+        iyy="1.697E-05"
+        iyz="-2.8743E-08"
+        izz="1.6895E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_41.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.78039 0.76078 0.74118 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_41.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_41_joint"
+    type="continuous">
+    <origin
+      xyz="-0.25 -0.16 -0.005"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_casterwheel_41" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="agv_casterwheel_42">
+    <inertial>
+      <origin
+        xyz="0.00012865 0.017 0"
+        rpy="0 0 0" />
+      <mass
+        value="0.10593" />
+      <inertia
+        ixx="4.2516E-05"
+        ixy="2.4113E-07"
+        ixz="-2.3416E-21"
+        iyy="7.4375E-05"
+        iyz="-8.9403E-21"
+        izz="4.2514E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_42.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.29804 0.29804 0.29804 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_casterwheel_42.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_casterwheel_42"
+    type="continuous">
+    <origin
+      xyz="0.03287 -0.017249 -0.0615"
+      rpy="0 0 0" />
+    <parent
+      link="agv_casterwheel_41" />
+    <child
+      link="agv_casterwheel_42" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="agv_laserrader">
+    <inertial>
+      <origin
+        xyz="-0.003337 8.6874E-07 -0.019431"
+        rpy="0 0 0" />
+      <mass
+        value="0.14399" />
+      <inertia
+        ixx="6.8842E-05"
+        ixy="-4.5304E-09"
+        ixz="-5.5211E-06"
+        iyy="8.5485E-05"
+        iyz="1.7638E-09"
+        izz="0.00011058" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_laserrader.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_laserrader.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_laserrader_joint"
+    type="fixed">
+    <origin
+      xyz="0.2817 0 0.066"
+      rpy="0 0 -1.5707" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_laserrader" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="agv_shelf">
+    <inertial>
+      <origin
+        xyz="0.00012261 0.00020991 -0.074781"
+        rpy="0 0 0" />
+      <mass
+        value="0.35775" />
+      <inertia
+        ixx="0.0091958"
+        ixy="7.7198E-06"
+        ixz="3.9744E-06"
+        iyy="0.0044251"
+        iyz="6.1521E-06"
+        izz="0.0087252" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_shelf.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://agv_vehicle/meshes/agv_shelf.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="agv_shelf_joint"
+    type="fixed">
+    <origin
+      xyz="0.229 -0.001 0.55"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="agv_shelf" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+</robot>

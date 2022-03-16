@@ -1,0 +1,29 @@
+<launch>
+  <include
+    file="$(find gazebo_ros)/launch/empty_world.launch" />
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+<!-- Convert an xacro and put on parameter server scara_operation -->
+  <group ns="scara_operation"> 
+    <param name="robot_description" command="$(find xacro)/xacro $(find scara_operation)/urdf/scara_operation.urdf.xacro" />
+    <node
+      name="spawn_model"
+      pkg="gazebo_ros"
+      type="spawn_model"
+      args="-param robot_description -urdf -model scara_operation"
+      output="screen" />
+    <include file="$(find scara_operation)/launch/operation_control.launch" />
+  </group>
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+
+</launch>
+
+<!-- args="-file $(find scara_operation)/urdf/scara_operation.urdf -urdf -model scara_operation"-->

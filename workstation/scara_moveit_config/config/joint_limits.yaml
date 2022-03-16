@@ -1,0 +1,54 @@
+# joint_limits.yaml allows the dynamics properties specified in the URDF to be overwritten or augmented as needed
+# Specific joint properties can be changed with the keys [max_position, min_position, max_velocity, max_acceleration]
+# Joint limits can be turned off with [has_velocity_limits, has_acceleration_limits]
+joint_limits:
+  scara_1_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_2_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_3_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_4_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_base_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_big_leftgrip_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_big_rightgrip_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_revolute_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_small_leftgrip_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0
+  scara_dualgrip_small_rightgrip_joint:
+    has_velocity_limits: true
+    max_velocity: 40
+    has_acceleration_limits: false
+    max_acceleration: 0

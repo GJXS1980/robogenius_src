@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'agv_leftwheel_joint', 'agv_rightwheel_joint', 'agv_casterwheel_11_joint', 'agv_casterwheel_12_joint', 'agv_casterwheel_21_joint', 'agv_casterwheel_22_joint', 'agv_casterwheel_31_joint', 'agv_casterwheel_32_joint', 'agv_casterwheel_41_joint', 'agv_casterwheel_42', ]

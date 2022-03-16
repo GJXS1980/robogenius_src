@@ -1,0 +1,356 @@
+<launch>
+
+  <!-- ***************************** The launch file param ***************************** -->
+  <arg name="metal_1_x_offset" value="1.475"/>
+  <arg name="metal_1_y_offset" value="-1.46"/>
+
+  <arg name="metal_2_x_offset" value="1.275"/>
+  <arg name="metal_2_y_offset" value="-1.5"/>
+
+  <arg name="metal_3_x_offset" value="1.375"/>
+  <arg name="metal_3_y_offset" value="-1.55"/>
+
+  <arg name="metal_4_x_offset" value="1.475"/>
+  <arg name="metal_4_y_offset" value="-1.6"/>
+
+  <arg name="paused" default="true"/>
+
+  <!-- ***************************** The launch file param ***************************** -->
+
+
+  <!-- ***************************** Load the empty world ***************************** -->
+
+  <include file="$(find gazebo_ros)/launch/empty_world.launch" >
+    <arg name="paused" value="$(arg paused)"/>
+  </include>
+
+  <!-- ***************************** Load the empty world ***************************** -->
+
+
+  <!-- ***************************** add all_world_base model ***************************** -->
+  
+  <node
+    name="spawn_model_all_world_base"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/all_world_base/model.sdf -sdf -x 0 -y 0 -z 0 -model all_world_base" respawn="false" output="screen" />
+
+  <!-- ***************************** add all_world_base model ***************************** -->
+
+
+  <!-- ***************************** add material_desk model ***************************** -->
+  <node
+    name="spawn_model_material_desk"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/desk/model.sdf -sdf -x -1.7687 -y -0.481 -z 0.0015 -model material_desk" respawn="false" output="screen" />
+
+  <!-- ***************************** add material_desk model ***************************** -->
+
+
+  <!-- ***************************** add top_material model *****************************-->
+  
+  <node
+    name="spawn_model_top_material"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/top_material/model.sdf -sdf -x -0.525 -y 1.995 -z 0.002 -model top_material" respawn="false" output="screen" />
+
+  <!-- ***************************** add top_material model *****************************-->
+
+
+  <!-- ***************************** add coke_can model ***************************** -->
+
+  <!-- <node
+    name="spawn_model_coke_can"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/coke_can/model.sdf -sdf -x 0 -y 0 -z 0 -model coke_can" respawn="false" output="screen" /> -->
+
+  <!-- ***************************** add coke_can model ***************************** -->
+
+
+  <!-- ***************************** add scara_operation model ***************************** -->
+  <!-- There have a small detail -->
+  <!-- You can modify the xacro to select one or two realsense camera-->
+
+  <param name="robot_description" command="$(find xacro)/xacro $(find scara_operation)/urdf/scara_operation.urdf.xacro" />
+  <node
+    name="spawn_model_scara_operation"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-param robot_description -urdf -x 0.0 -y -0.0 -z 0.0 -Y 0.0 -model scara_operation"
+    output="screen" />
+	<!--args="-param robot_description -urdf -x 1.35 -y -1.2 -z 0 -Y 3.14 -model scara_operation"
+    output="screen" />-->
+  <include file="$(find scara_operation)/launch/operation_control.launch" />
+
+  <!--<node
+    name="spawn_model_scara"
+    pkg="gazebo_ros"
+    type="spawn_model"   
+    args="-file $(find all_world)/models/scara_model/model.sdf -sdf -x 0 -y 0 -z 0 -Y 0 -model scara" respawn="false" output="screen" />-->
+
+  <!-- ***************************** add scara_operation model ***************************** -->
+
+  <!-- ***************************** add metal_base model ***************************** -->
+  <!-- V1 metal_base_vtwo -->
+  <!-- V2 metal_base_two -->
+
+  <node
+    name="spawn_model_metal_base"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_base_two/model.sdf -sdf -x 1.102 -y -1.1 -z 0.754 -Y 3.14 -model metal_base" respawn="false" output="screen" />
+
+  <!-- ***************************** add metal_base model ***************************** -->
+
+
+  <!-- ***************************** add metal_muddle_base model *****************************-->
+
+  <node
+    name="spawn_model_metal_middle"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_middlevtwo/model.sdf -sdf -x 1.102 -y -1.1 -z 0.769 -Y 3.14 -model metal_middle" respawn="false" output="screen" />
+
+  <!-- ***************************** add metal_muddle_base model *****************************-->
+
+
+  <!-- ***************************** add metal model *****************************-->
+
+  <node
+    name="spawn_model_metal"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metalvtwo/model.sdf -sdf -x 1.123 -y -1.1 -z 0.808 -Y 1.5707 -model metal" respawn="false" output="screen" />
+
+  <!-- ***************************** add metal model *****************************-->
+
+
+  <!-- ****************************** material desk metal ********************************** -->
+  <node
+    name="spawn_model_metal_base_material"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_base_two/model.sdf -sdf -x -1.78 -y -0.3 -z 0.4 -Y 3.14 -model metal_base_material" respawn="false" output="screen" />
+
+  <!-- add metal_middle_base model-->
+
+  <node
+    name="spawn_model_metal_middle_material"
+    pkg="gazebo_ros"
+
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_middlevtwo/model.sdf -sdf -x -1.78 -y -0.3 -z 0.414 -Y 3.14 -model metal_middle_material" respawn="false" output="screen" />
+
+  <!-- add metal model-->
+
+  <node
+    name="spawn_model_metal_material"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metalvtwo/model.sdf -sdf -x -1.78 -y -0.3 -z 0.454 -Y 1.5707 -model metal_material" respawn="false" output="screen" />
+
+  <!-- *************************** material desk metal ************************************* -->
+
+  <!-- *************************** material desk screw ************************************* -->
+
+  <node
+    name="spawn_model_screw_base_material"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_base_two/model.sdf -sdf -x -1.78 -y -0.55 -z 0.4 -Y 3.14 -model screw_base_material" respawn="false" output="screen" />
+
+  <!-- add screw_middle_base model-->
+
+  <node
+    name="spawn_model_screw_middle_material"
+
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_middlevtwo/model.sdf -sdf -x -1.78 -y -0.55 -z 0.414 -model screw_middle_material" respawn="false" output="screen" />
+
+  <!-- add screw model-->
+
+  <node
+    name="spawn_model_material_screw1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.852 -y -0.527 -z 0.457 -model material_screw1" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_material_screw2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.8 -y -0.527 -z 0.457 -model material_screw2" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_material_screw3"
+    pkg="gazebo_ros"
+
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.712 -y -0.527 -z 0.457 -model material_screw3" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_material_screw4"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.852 -y -0.576 -z 0.457 -model material_screw4" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_material_screw5"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.8 -y -0.576 -z 0.457 -model material_screw5" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_material_screw6"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x -1.712 -y -0.576 -z 0.457 -model material_screw6" respawn="false" output="screen" /> 
+
+  <!-- *************************** material desk screw ************************************* -->
+
+  <!-- ***************************** add screw_base model ***************************** -->
+
+  <node
+    name="spawn_model_screw_base"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_base_two/model.sdf -sdf -x 1.102 -y -0.95 -z 0.754 -Y 3.14 -model screw_base" respawn="false" output="screen" />
+
+  <!-- ***************************** add screw_base model ***************************** -->
+
+  <!-- ***************************** add screw_middle_base model ***************************** -->
+
+  <node
+    name="spawn_model_screw_middle"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_middlevtwo/model.sdf -sdf -x 1.102 -y -0.95 -z 0.769 -model screw_middle" respawn="false" output="screen" />
+
+  <!-- ***************************** add screw_middle_base model ***************************** -->
+
+  <!-- ***************************** add screw model ***************************** -->
+
+  <!--<node
+    name="spawn_model_screw"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.106769 -y -0.849866 -z 0.814686 -model screw" respawn="false" output="screen" /> -->
+
+  <!-- ***************************** add screw model ***************************** -->
+
+  <!-- ***************************** add serious screw model ***************************** -->
+
+  <node
+    name="spawn_model_screw1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.14 -y -0.927 -z 0.814686 -model screw1" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_screw2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.104 -y -0.927 -z 0.814686 -model screw2" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_screw3"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.068 -y -0.927 -z 0.814686 -model screw3" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_screw4"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.14 -y -0.976 -z 0.814686 -model screw4" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_screw5"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.104 -y -0.976 -z 0.814686 -model screw5" respawn="false" output="screen" /> 
+
+  <node
+    name="spawn_model_screw6"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/screw/model.sdf -sdf -x 1.068 -y -0.976 -z 0.814686 -model screw6" respawn="false" output="screen" /> 
+  
+  <!-- ***************************** add serious screw model ***************************** -->
+
+  <!-- ***************************** add M8 nut ***************************** -->
+
+  <node
+    name="spawn_model_nut"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/nut/model.sdf -sdf -x 1.04 -y -1.1 -z 0.79 -model nut" respawn="false" output="screen" />
+
+  <!-- ***************************** add M8 nut ***************************** -->
+
+  <!-- ***************************** add box_container ***************************** -->
+  
+  <!--<node
+    name="spawn_model_box_container"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/box_container/model.sdf -sdf -x 1.359625 -y -0.862007 -z 0.754000 -model box_container" respawn="false" output="screen" />-->
+
+  <!-- ***************************** add box_container ***************************** -->
+
+  <!-- ****************************** add fall_scattered_metal model ************************************* -->
+  <!-- The area limited -->
+  <!-- x = 1.075 ~ 1.69 -->
+  <!-- y = -1.40 ~ -1.64 -->
+  <!-- z = 0.774 -->
+  <!-- Grey : metalvtwo -->
+  <!-- Red : metal_red -->
+  <!-- platform 0  0.774  1  0.815 -->
+  
+  <node
+    name="spawn_model_metal_1"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_red/model.sdf -sdf -x $(arg metal_1_x_offset) -y $(arg metal_1_y_offset) -z 0.815 -Y 0 -model metal_1" respawn="false" output="screen" />
+
+  <node
+    name="spawn_model_metal_2"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_red/model.sdf -sdf -x $(arg metal_2_x_offset) -y $(arg metal_2_y_offset) -z 0.815 -Y 2.277 -model metal_2" respawn="false" output="screen" />
+
+  <node
+    name="spawn_model_metal_3"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_red/model.sdf -sdf -x $(arg metal_3_x_offset) -y $(arg metal_3_y_offset) -z 0.815 -Y 1 -model metal_3" respawn="false" output="screen" />
+
+  <node
+    name="spawn_model_metal_4"
+    pkg="gazebo_ros"
+    type="spawn_model"
+    args="-file $(find all_world)/models/metal_red/model.sdf -sdf -x $(arg metal_4_x_offset) -y $(arg metal_4_y_offset) -z 0.815 -Y 3.14 -model metal_4" respawn="false" output="screen" />
+  
+  <!-- ****************************** add random metal model  ************************************* -->
+
+  <node
+    name="tf_footprint_base"
+    pkg="tf"
+    type="static_transform_publisher"
+    args="0 0 0 0 0 0 base_link base_footprint 40" />
+
+  <node
+    name="fake_joint_calibration"
+    pkg="rostopic"
+    type="rostopic"
+    args="pub /calibrated std_msgs/Bool true" />
+</launch>
+
+
+  <!--<param name="robot_description" textfile="$(find scara)/urdf/scara.urdf" /> -->
+
+  <!-- <param name="robot_description" command="$(find xacro)/xacro -1-inorder $(find agv_vehicle)/urdf/agv_arm.urdf.xacro" /> -->

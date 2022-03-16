@@ -1,0 +1,19 @@
+controller_list:
+  - name: fake_cobot_arm_controller
+    joints:
+      - agv_cobot_1_joint
+      - agv_cobot_2_joint
+      - agv_cobot_3_joint
+      - agv_cobot_4_joint
+      - agv_cobot_5_joint
+      - agv_cobot_6_joint
+      - agv_cobot_7_base
+  - name: fake_cobot_hand_controller
+    joints:
+      - agv_leftgrip_joint
+      - agv_rightgrip_joint
+initial:  # Define initial robot poses.
+  - group: cobot_arm
+    pose: home
+  - group: cobot_hand
+    pose: place

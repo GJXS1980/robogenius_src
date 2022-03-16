@@ -1,0 +1,6 @@
+<launch>
+
+  <node pkg = "opencv_object_tracking" type = "object_filter_orientation1" name = "object_filter" output = "screen" />
+  <node pkg = "opencv_object_tracking" type = "get_target" name = "target_sender" output = "screen" />
+
+</launch>

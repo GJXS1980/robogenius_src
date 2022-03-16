@@ -1,0 +1,6 @@
+<launch>
+
+  <node pkg = "motion_control" type = "Pickandplace.py" name = "Pick_place" output = "screen" />
+
+</launch>
+

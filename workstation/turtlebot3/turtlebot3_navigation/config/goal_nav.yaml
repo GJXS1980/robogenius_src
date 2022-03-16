@@ -1,0 +1,26 @@
+Material_table:
+ goal_x : -1.09388
+ goal_y : -0.46344
+ goal_z : 0.10284
+ Orientation_x : -0.00014
+ Orientation_y : 0.00030
+ Orientation_z : 0.01016
+ Orientation_w : -0.99995
+
+Stereoscopic_warehouse:
+ goal_x : -0.50937
+ goal_y : 1.19048
+ goal_z : 0.10284
+ Orientation_x : -0.00014
+ Orientation_y : 0.00030
+ Orientation_z : 0.00632
+ Orientation_w : -0.99998
+
+Origin:
+ goal_x : -0.50937
+ goal_y : 1.19048
+ goal_z : 0.10284
+ Orientation_x : -0.00014
+ Orientation_y : 0.00030
+ Orientation_z : 0.00632
+ Orientation_w : -0.99998

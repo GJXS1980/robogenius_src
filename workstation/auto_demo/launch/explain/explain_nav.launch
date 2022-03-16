@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+
+<launch>
+
+<include file="$(find auto_demo)/launch/amcl_bringup/castlex_nav.launch"/>
+
+<include file="$(find castlex_battery)/launch/battery_manager.launch"/>
+
+<node pkg = "auto_demo" type = "castlex_explain_task.py" name = "castlex_explain_task" output="screen" />
+
+</launch>

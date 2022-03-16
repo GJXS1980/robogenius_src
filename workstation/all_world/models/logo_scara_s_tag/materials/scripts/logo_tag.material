@@ -1,0 +1,15 @@
+material logo_tag/HG_Logo
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture HG_Logo.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

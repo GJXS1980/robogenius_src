@@ -1,0 +1,183 @@
+<?xml version="1.0"?>
+
+ <!-- This file is the waffle_pi turtlebot3_waffle_pi_sim robot description and write by xacro -->
+ <!-- Set robot tag which name is turtlebot3_waffle_pi_sim and Set the xml namespace is xacro which point to http://ros.org/wiki/xacro for analysis the file-->
+<robot name="agv_sim"  xmlns:xacro="http://ros.org/wiki/xacro">
+
+
+  <gazebo reference="base_link">
+    <material>Gazebo/DarkGrey</material>
+  </gazebo>
+
+ <!-- Set the reference value is base_link and material set Gazebo/FlatBlack -->
+ <!-- Set the friction coefficients is mu1 and mu2 -->
+ <!-- Set the contant stiffness kp and damping kd -->
+ <!-- Set the minimum allowable depth before contact correction impulse is applied -->
+ <!-- Set the maximum contact correction velocity truncation term -->
+ <!-- Set the friction mu1 direction in the collision local reference --> 
+  <gazebo reference="agv_leftwheel">
+    <mu1>10000</mu1>
+    <mu2>10000</mu2>
+    <kp>500000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="agv_rightwheel">
+    <mu1>10000</mu1>
+    <mu2>10000</mu2>
+    <kp>500000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+    <fdir1>1 0 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="agv_casterwheel_11">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 0 1</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+  
+
+  <gazebo reference="agv_casterwheel_12">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 -1 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+ <gazebo reference="agv_casterwheel_21">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 0 1</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="agv_casterwheel_22">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>1.0</maxVel>
+    <fdir1>0 -1 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+ <gazebo reference="agv_casterwheel_31">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 0 1</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="agv_casterwheel_32">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 -1 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+ <gazebo reference="agv_casterwheel_41">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 0 1</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo reference="agv_casterwheel_42">
+    <mu1>0.01</mu1>
+    <mu2>0.01</mu2>
+    <kp>1000000.0</kp>
+    <kd>100.0</kd>
+    <minDepth>0.001</minDepth>
+    <maxVel>0.1</maxVel>
+    <fdir1>0 -1 0</fdir1>
+    <material>Gazebo/FlatBlack</material>
+  </gazebo>
+
+  <gazebo>
+    <plugin name="agv_vehicle_controller" filename="libgazebo_ros_diff_drive.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_footprint</robotBaseFrame>
+      <publishWheelTF>true</publishWheelTF>
+      <publishTf>true</publishTf>
+      <publishWheelJointState>true</publishWheelJointState>
+      <legacyMode>false</legacyMode>
+      <updateRate>30</updateRate>
+      <leftJoint>agv_leftwheel_joint</leftJoint>
+      <rightJoint>agv_rightwheel_joint</rightJoint>
+      <wheelSeparation>0.34</wheelSeparation>
+      <wheelDiameter>0.155</wheelDiameter>
+      <wheelAcceleration>1</wheelAcceleration>
+      <wheelTorque>10</wheelTorque>
+      <rosDebugLevel>na</rosDebugLevel>
+    </plugin>
+  </gazebo>
+
+ <gazebo reference="agv_laserrader">
+    <material>Gazebo/FlatBlack</material>
+    <sensor type="ray" name="lader_sensor">
+      <pose>0 0 0 0 0 0</pose>
+      <visualize>false</visualize>
+      <ray>
+        <scan>
+          <horizontal>
+            <samples>360</samples>
+            <resolution>1</resolution>
+            <min_angle>0.0</min_angle>
+            <max_angle>3.14</max_angle>
+          </horizontal>
+        </scan>
+        <range>
+          <min>0.120</min>
+          <max>3.5</max>
+          <resolution>0.015</resolution>
+        </range>
+        <noise>
+          <type>gaussian</type>
+          <mean>0.0</mean>
+          <stddev>0.01</stddev>
+        </noise>
+      </ray>
+      <plugin name="gazebo_ros_lds_lfcd_controller" filename="libgazebo_ros_laser.so">
+        <topicName>scan</topicName>
+        <frameName>agv_laserrader</frameName>
+        <update_rate>1800</update_rate>
+      </plugin>
+    </sensor>
+  </gazebo>
+
+</robot>

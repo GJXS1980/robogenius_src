@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<launch>
+    <!-- 启动导航  -->
+  <include file="$(find auto_demo)/launch/amcl_bringup/castlex_nav.launch"/>
+  <!--打开语音唤醒-->
+  <!-- include file="$(find snowboy_ros)/launch/snowboy.launch"/ -->
+  <include file="$(find castlex_awake)/launch/castlex_awake.launch"/>
+
+  <!--打开命令词识别-->
+  <node pkg = "castlex_voice_system" type = "castlex_auto_order_node" name = "castlex_auto_order_node" output="screen"/>
+
+  <!--打开命令词解析-->
+  <node pkg = "castlex_voice_system" type = "castlex_auto_cmd.py" name = "XML_Analysis" output="screen">
+    <!-- 设置命令词识别的打印结果的模板 -->
+    <param name="file_path" value="$(find castlex_voice_system)/params/castlex_auto.xml" />
+    <!--     设置识别完之后的提示音 -->
+    <param name="failed_file_path" value="$(find castlex_voice_system)/params/voice/failed.mp3" />
+    <param name="Received_file_path" value="$(find castlex_voice_system)/params/voice/Received.mp3" />
+    <param name="ReEnterAuido_file_path" value="$(find castlex_voice_system)/params/voice/ReEnterAuido.mp3" />      
+  </node>
+
+  <!-- 启动相机节点  -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+
+  <!-- 启动物体识别节点  -->
+  <!--node pkg="object_detect" name="object" type="castlex_auto.py" output="screen"-->   
+  <node pkg="auto_demo" name="object" type="object_detect.py" output="screen">
+   <remap from="input_rgb_image" to="/usb_cam/image_raw" />      
+  </node>
+
+  <!-- 启动导航去第一个目标点  -->
+  <node pkg="auto_demo" name="cal_act" type="cal_act.py"/>   
+  <!-- 启动远离工作台动作  -->
+  <node pkg="auto_demo" name="escape_act" type="escape_act.py"/>  
+  <!-- 启动超声波校准  -->
+  <node pkg="auto_demo" name="goal_act" type="goal_act.py"/>  
+
+  <!-- 启动订阅cv_bridge_image话题  -->
+  <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" args="/usb_cam/image_raw"/>
+
+  <!-- 启动机械臂驱动  -->
+  <node pkg="dobot" type="DobotServer" name="DobotServer" args="dobot" />
+
+</launch>

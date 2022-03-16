@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='utf-8'?>
+<launch>
+  <include file="$(find rplidar_ros)/launch/rplidar_A2.launch"/>
+
+  <!-- 启动底盘  -->
+  <include file="$(find castlex_bringup)/launch/castlex_stm32_bridge.launch"/>
+
+  <!-- 启动导航  -->
+  <include file="$(find auto_demo)/launch/amcl_bringup/robot_xdu_amcl.launch"/>
+
+</launch>

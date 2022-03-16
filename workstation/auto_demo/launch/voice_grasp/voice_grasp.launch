@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='utf-8'?>
+<launch>
+
+  <!-- 改了dobot -->
+  <!-- 启动机械臂  -->
+  <node pkg="dobot" type="DobotServer" name="DobotServer" args="dobot" />
+
+  <!-- 初始化机械臂位置  -->
+  <node pkg="dobot" type="robot_init_client" name="robot_init_client" />
+  <node pkg="dobot" type="robot_init_server" name="robot_init_server" />
+
+  <!-- 初始化机械臂识别物体位置  -->
+  <!-- 初始化机械臂识别物体位置的客户端  -->
+  <node pkg="dobot" type="robot_object_detect_client" name="robot_object_detect_client" />
+    <!-- 初始化机械臂识别物体位置的服务器端  -->
+    <node pkg="dobot" type="robot_object_detect_server" name="robot_object_detect_server" >
+    <!-- 识别物体时机械臂的x坐标(笛卡尔坐标系)  -->
+    <param name="detect_x" value="230.0" />   
+    <!-- 识别物体时机械臂的y坐标(笛卡尔坐标系)  -->  
+    <param name="detect_y" value="0.0" />  
+    <!-- 识别物体时机械臂的z坐标(笛卡尔坐标系) -->   
+    <param name="detect_z" value="120.0" />
+  </node>
+
+  <!-- 启动相机节点  -->
+  <include file="$(find usb_cam)/launch/usb_cam-test.launch"/>
+
+  <node pkg="auto_demo" name="object_position_detect" type="object_position_detect.py" output="screen">   
+    <remap from="input_rgb_image" to="/usb_cam/image_raw" />      
+  </node>
+
+  <!-- 启动语音识别  -->
+  <include file="$(find castlex_voice_system)/launch/voice_object.launch"/>
+
+  <!-- 启动订阅cv_bridge_image话题  -->
+  <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" args="/usb_cam/image_raw"/>
+
+  <!-- 物体抓取的客户端  -->
+  <node pkg="dobot" type="robot_pick_up_client" name="robot_pick_up_client" />
+
+  <!-- 物体抓取的服务器端  -->
+  <node pkg="dobot" type="robot_pick_up_server" name="robot_pick_up_server">
+    <!-- 方块的边长  -->
+	  <param name="side_length" value="33.87" />   
+    <!-- 相机到吸盘的距离（x方向的偏差）  -->  
+	  <param name="CamToSucker" value="39" />  
+    <!-- 相机与吸盘在y方向的偏差  -->
+    <param name="CamToSuc_deviation" value="7.8" />  
+    <!-- 吸盘吸取的高度  default ="-40"-->   
+	  <param name="suck_z" value="12.0" />
+    <!-- 识别物体时机械臂的x坐标(笛卡尔坐标系),数值跟robot_object_detect_server设置保持一致  -->   
+    <param name="detect_x" value="230.0" />
+    <!-- 识别物体时机械臂的y坐标(笛卡尔坐标系),数值跟robot_object_detect_server设置保持一致 -->   
+    <param name="detect_y" value="0.0" />
+  </node>
+
+</launch>

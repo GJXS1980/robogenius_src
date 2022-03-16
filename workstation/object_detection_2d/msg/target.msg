@@ -1,0 +1,2 @@
+float32 target_center_x
+float32 target_center_y

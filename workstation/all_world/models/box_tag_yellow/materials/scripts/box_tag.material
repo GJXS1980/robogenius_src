@@ -1,0 +1,15 @@
+material box_tag/yellow
+{
+  technique
+  {
+    pass
+    {
+      texture_unit
+      {
+        texture yellow.png
+        filtering anistropic
+        max_anisotropy 16
+      }
+    }
+  }
+}

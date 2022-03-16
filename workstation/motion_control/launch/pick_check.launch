@@ -1,0 +1,9 @@
+<launch>
+
+  <!--<include file="$(find opencv_object_tracking)/launch/object_detection.launch">
+  </include>-->
+
+  <node pkg = "motion_control" type = "Pick_test.py" name = "Pick_test" output = "screen" />
+
+
+</launch>

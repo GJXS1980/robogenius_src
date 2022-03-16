@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot
+  name="scara_operation">
+  <link name="world"/>
+  <joint name="world_scara_operation" type="fixed">
+    <origin xyz="0 0 0" rpy="0 0 0" />
+    <parent link="world" />
+    <child link="scara_workspace_base" />
+  </joint>
+  <link
+    name="scara_workspace_base">
+    <inertial>
+      <origin
+        xyz="0.0040733 0.019417 0.19187"
+        rpy="0 0 0" />
+      <mass
+        value="127.01" />
+      <inertia
+        ixx="9.6889"
+        ixy="0.0040168"
+        ixz="0.0022999"
+        iyy="6.7002"
+        iyz="0.00065688"
+        izz="15.721" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_workspace_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_workspace_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="scara_desktop">
+    <inertial>
+      <origin
+        xyz="0.024384 -3.8164E-17 -0.01"
+        rpy="0 0 0" />
+      <mass
+        value="16.24" />
+      <inertia
+        ixx="1.5872"
+        ixy="4.0658E-17"
+        ixz="-3.4294E-18"
+        iyy="0.93566"
+        iyz="-3.5009E-18"
+        izz="2.5218" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_desktop.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_desktop.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_desktop_joint"
+    type="fixed">
+    <origin
+      xyz="0 0 0.754"
+      rpy="0 0 0" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_desktop" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="scara_rivet_board">
+    <inertial>
+      <origin
+        xyz="-5.5511E-17 0 -0.01225"
+        rpy="0 0 0" />
+      <mass
+        value="0.78371" />
+      <inertia
+        ixx="0.0015841"
+        ixy="1.8584E-19"
+        ixz="1.285E-20"
+        iyy="0.0028563"
+        iyz="7.2218E-21"
+        izz="0.0043621" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_rivet_board.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_rivet_board.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_rivet_board_joint"
+    type="fixed">
+    <origin
+      xyz="-0.295 -0.33902 0.7925"
+      rpy="0 0 0" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_rivet_board" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="scara_rivet_base">
+    <inertial>
+      <origin
+        xyz="0.00015498 1.3535E-09 0.04983"
+        rpy="0 0 0" />
+      <mass
+        value="0.65955" />
+      <inertia
+        ixx="0.0028251"
+        ixy="-7.6456E-11"
+        ixz="-2.2744E-09"
+        iyy="0.0019732"
+        iyz="-2.2035E-11"
+        izz="0.0012232" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_rivet_base.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_rivet_base.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_rivet_base_joint"
+    type="prismatic">
+    <origin
+      xyz="-0.295 -0.34 1.114"
+      rpy="0 0 0" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_rivet_base" />
+    <axis
+      xyz="0 0 -1" />
+    <limit
+      lower="0"
+      upper="0.245"
+      effort="0"
+      velocity="0" />
+  </joint>
+  <link
+    name="scara_3dcamera">
+    <inertial>
+      <origin
+        xyz="-8.5692E-07 -2.7958E-06 0.01003"
+        rpy="0 0 0" />
+      <mass
+        value="0.070229" />
+      <inertia
+        ixx="6.118E-05"
+        ixy="-2.2287E-07"
+        ixz="-8.6313E-10"
+        iyy="9.5966E-06"
+        iyz="-1.9497E-09"
+        izz="6.6077E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_3dcamera.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.50196 1 0.50196 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_3dcamera.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_3dcamera_joint"
+    type="fixed">
+    <origin
+      xyz="0.235 -0.16 1.299"
+      rpy="0 0 0" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_3dcamera" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="scara_workspace_connection">
+    <inertial>
+      <origin
+        xyz="-1.1102E-16 6.5919E-17 5E-05"
+        rpy="0 0 0" />
+      <mass
+        value="7.854E-06" />
+      <inertia
+        ixx="4.9094E-11"
+        ixy="4.564E-28"
+        ixz="-9.1461E-27"
+        iyy="4.9094E-11"
+        iyz="-2.0325E-25"
+        izz="9.8175E-11" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_workspace_connection.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://scara_operation/meshes/scara_workspace_connection.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_workspace_connection_joint"
+    type="fixed">
+    <origin
+      xyz="-0.2365 0 0.618"
+      rpy="0 0 0" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_workspace_connection" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+
+  <!-- platform -->
+  <link
+    name="scara_workspace_platform">
+    <visual>
+      <origin
+        xyz="0 0 0.025"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.32 0.7 0.032"/>
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.79216 0.81961 0.93333 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.32 0.7 0.032"/>
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="scara_workspace_platform_joint"
+    type="fixed">
+    <origin
+      xyz="-0.033 0.32 0.754"
+      rpy="0 0 1.5707" />
+    <parent
+      link="scara_workspace_base" />
+    <child
+      link="scara_workspace_platform" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+</robot>

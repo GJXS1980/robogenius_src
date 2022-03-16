@@ -1,0 +1,515 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!-- This URDF was automatically created by SolidWorks to URDF Exporter! Originally created by Stephen Brawner (brawner@gmail.com) 
+     Commit Version: 1.5.1-0-g916b5db  Build Version: 1.5.7152.31018
+     For more information, please see http://wiki.ros.org/sw_urdf_exporter -->
+<robot name="scara">
+    <!-- world link and joint-->
+    <link name="world" />
+    <joint name="scara_world_fixed" type="fixed">
+        <origin xyz="1.5835 -1.19925 0.619" rpy="0 0 3.14" />
+        <parent link="world" />
+        <child link="scara_base" />
+    </joint>
+    <!-- scara_base link and joint-->
+    <link name="scara_base">
+        
+<inertial>
+            <origin xyz="-0.0466275884373692 -7.54447678475365E-05 0.147790495095133" rpy="0 0 0" />
+            <mass value="11.1692970013821" />
+            <inertia ixx="0.13010207054382" ixy="4.91663865320639E-05" ixz="0.00338898625463288" iyy="0.139730089593404" iyz="-3.52441868421469E-05" izz="0.0821726216595377" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_base.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_base.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <!-- scara_1_link link and joint-->
+    <link name="scara_1_link">
+        
+<inertial>
+            <origin xyz="3.20381253471336E-08 2.33217980830092E-08 -0.110508211821609" rpy="0 0 0" />
+            <mass value="2.07035864610089" />
+            <inertia ixx="0.00977079435343695" ixy="-1.31401460512319E-34" ixz="7.87030913007697E-19" iyy="0.00977079435343695" iyz="-3.18556914854321E-35" izz="0.00310989168274389" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_1_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_1_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_1_joint" type="prismatic">
+        <origin xyz="0 0 0.4381" rpy="0 0 0" />
+        <parent link="scara_base" />
+        <child link="scara_1_link" />
+        <axis xyz="0 0 1" />
+        <limit lower="-0.085" upper="0.11650" effort="500" velocity="40" />
+    </joint>
+    <!-- scara_2_link link and joint-->
+    <link name="scara_2_link">
+        
+<inertial>
+            <origin xyz="0.148735646317378 -0.000762470295352237 0.031712783245286" rpy="0 0 0" />
+            <mass value="2.70259783283018" />
+            <inertia ixx="0.00357952697118074" ixy="0.000229156793983873" ixz="-0.000269075859434019" iyy="0.0471392691523691" iyz="2.37986815404708E-06" izz="0.0491336874119309" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_2_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_2_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_2_joint" type="revolute">
+        <origin xyz="0 0 0" rpy="0 0 0" />
+        <parent link="scara_1_link" />
+        <child link="scara_2_link" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_3_link link and joint-->
+    <link name="scara_3_link">
+        
+<inertial>
+            <origin xyz="0.0958766917944747 -0.000499719606443169 -0.0340646007252448" rpy="0 0 0" />
+            <mass value="1.38477026907103" />
+            <inertia ixx="0.00127343450906758" ixy="6.28271953355909E-05" ixz="0.00051849278101448" iyy="0.0132231623783675" iyz="-2.80329894095281E-06" izz="0.0136929938776214" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_3_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_3_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_3_joint" type="revolute">
+        <origin xyz="0.325 -0.0017021 -0.012" rpy="0 0 0" />
+        <parent link="scara_2_link" />
+        <child link="scara_3_link" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_4_link link and joint-->
+    <link name="scara_4_link">
+        
+<inertial>
+            <origin xyz="6.95027257793801E-05 -3.63984386360372E-07 0.000689833061898182" rpy="0 0 0" />
+            <mass value="0.0129232855696263" />
+            <inertia ixx="2.07522360745798E-06" ixy="-2.7138155056434E-10" ixz="1.1234797000263E-09" iyy="2.02340479065693E-06" iyz="-5.88364073970398E-12" izz="3.9226504846675E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_4_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="1 1 1 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_4_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_4_joint" type="revolute">
+        <origin xyz="0.225 -0.0011784 -0.0698" rpy="0 0 0" />
+        <parent link="scara_3_link" />
+        <child link="scara_4_link" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_base link and joint-->
+    <link name="scara_dualgrip_base">
+        
+<inertial>
+            <origin xyz="7.23453146960797E-05 0.0096759451788067 -0.0623140847365389" rpy="0 0 0" />
+            <mass value="0.263003665739401" />
+            <inertia ixx="0.000670146640576069" ixy="3.29100493249028E-08" ixz="3.65215199677724E-07" iyy="7.43861628431838E-05" iyz="2.8459464241585E-08" izz="0.000677529422106354" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_base.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_base.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_base_joint" type="revolute">
+        <origin xyz="0 0 -0.005" rpy="0 0 0" />
+        <parent link="scara_4_link" />
+        <child link="scara_dualgrip_base" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-0.05" upper="0.05" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_revolute_link link and joint-->
+    <link name="scara_dualgrip_revolute_link">
+        
+<inertial>
+            <origin xyz="3.81496737639278E-05 1.36618258396309E-05 -0.0262312800603783" rpy="0 0 0" />
+            <mass value="0.0412031537944349" />
+            <inertia ixx="1.31166262545024E-05" ixy="1.21675796434348E-08" ixz="1.83190947535316E-08" iyy="1.12591132372413E-05" iyz="-2.96212418885922E-08" izz="5.89768426049309E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_revolute_link.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_revolute_link.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_revolute_joint" type="revolute">
+        <origin xyz="0 0.12 -0.067" rpy="0 0 0" />
+        <parent link="scara_dualgrip_base" />
+        <child link="scara_dualgrip_revolute_link" />
+        <axis xyz="0 0 -1" />
+        <limit lower="-3.14" upper="3.14" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_small_grip_ref link for moveit ref-->
+    <link name="scara_dualgrip_small_grip_ref" />
+    <joint name="scara_dualgrip_small_grip_joint" type="fixed">
+        <origin xyz="0 0.12 -0.067" rpy="0 0 0" />
+        <parent link="scara_dualgrip_base" />
+        <child link="scara_dualgrip_small_grip_ref" />
+    </joint>
+    <!-- scara_dualgrip_small_leftgrip link and joint-->
+    <link name="scara_dualgrip_small_leftgrip">
+        
+<inertial>
+            <origin xyz="-1.00613961606655E-16 -0.0159463907864763 -0.015552406077585" rpy="0 0 0" />
+            <mass value="0.00367800685678276" />
+            <inertia ixx="2.19007418255852E-07" ixy="2.14778601846179E-24" ixz="-5.32104052626083E-23" iyy="2.37492317797964E-07" iyz="1.01307940849081E-08" izz="8.79189398484812E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_small_leftgrip.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_small_leftgrip.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_small_leftgrip_joint" type="prismatic">
+        <origin xyz="0 0 -0.057" rpy="0 0 0" />
+        <parent link="scara_dualgrip_revolute_link" />
+        <child link="scara_dualgrip_small_leftgrip" />
+        <axis xyz="0 1 0" />
+        <limit lower="-0.1" upper="0.007" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_small_rightgrip link and joint-->
+    <link name="scara_dualgrip_small_rightgrip">
+        
+<inertial>
+            <origin xyz="-7.28583859910259E-17 0.0159463907864763 -0.015552406077585" rpy="0 0 0" />
+            <mass value="0.00367800685678277" />
+            <inertia ixx="2.19007418255853E-07" ixy="6.18044644883526E-24" ixz="-1.87272320828515E-23" iyy="2.37492317797965E-07" iyz="-1.01307940849081E-08" izz="8.79189398484812E-08" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_small_rightgrip.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_small_rightgrip.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_small_rightgrip_joint" type="prismatic">
+        <origin xyz="0 0 -0.057" rpy="0 0 0" />
+        <parent link="scara_dualgrip_revolute_link" />
+        <child link="scara_dualgrip_small_rightgrip" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-0.1" upper="0.007" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_big_grip_ref link for moveit ref-->
+    <link name="scara_dualgrip_big_grip_ref" />
+    <joint name="scara_dualgrip_big_grip_joint" type="fixed">
+        <origin xyz="0 -0.12 -0.105" rpy="0 0 0" />
+        <parent link="scara_dualgrip_base" />
+        <child link="scara_dualgrip_big_grip_ref" />
+    </joint>
+    <!-- scara_dualgrip_big_leftgrip link and joint-->
+    <link name="scara_dualgrip_big_leftgrip">
+        
+<inertial>
+            <origin xyz="-2.97158131434827E-15 -0.029542090561631 -0.0292360515169633" rpy="0 0 0" />
+            <mass value="0.0155463327571982" />
+            <inertia ixx="5.29388252092913E-06" ixy="2.10876193989921E-20" ixz="2.62074645036157E-20" iyy="3.85312396276869E-06" iyz="-1.83400532280862E-06" izz="3.04227513765101E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_big_leftgrip.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_big_leftgrip.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_big_leftgrip_joint" type="prismatic">
+        <origin xyz="0 -0.12 -0.105" rpy="0 0 0" />
+        <parent link="scara_dualgrip_base" />
+        <child link="scara_dualgrip_big_leftgrip" />
+        <axis xyz="0 1 0" />
+        <limit lower="-0.1" upper="0.007" effort="100" velocity="40" />
+    </joint>
+    <!-- scara_dualgrip_big_rightgrip link and joint-->
+    <link name="scara_dualgrip_big_rightgrip">
+        
+<inertial>
+            <origin xyz="-8.67361737988404E-17 0.029812848166246 -0.0292360515169632" rpy="0 0 0" />
+            <mass value="0.0155463327571982" />
+            <inertia ixx="5.29388252092913E-06" ixy="2.22310037740976E-22" ixz="-1.218322141642E-22" iyy="3.85312396276869E-06" iyz="1.83400532280862E-06" izz="3.04227513765101E-06" />
+        </inertial>
+
+        <visual>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_big_rightgrip.STL" />
+            </geometry>
+            <material name="">
+                <color rgba="0.792156862745098 0.819607843137255 0.933333333333333 1" />
+            </material>
+        </visual>
+        <collision>
+            <origin xyz="0 0 0" rpy="0 0 0" />
+            <geometry>
+                <mesh filename="package://scara/meshes/scara_dualgrip_big_rightgrip.STL" />
+            </geometry>
+        </collision>
+    </link>
+    <joint name="scara_dualgrip_big_rightgrip_joint" type="prismatic">
+        <origin xyz="0 -0.12 -0.105" rpy="0 0 0" />
+        <parent link="scara_dualgrip_base" />
+        <child link="scara_dualgrip_big_rightgrip" />
+        <axis xyz="0 -1 0" />
+        <limit lower="-0.1" upper="0.007" effort="100" velocity="40" />
+    </joint>
+    
+<transmission name="trans_scara_1_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_1_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_1_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_2_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_2_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_2_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_3_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_3_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_3_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_4_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_4_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_4_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_base_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_base_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_base_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_revolute_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_revolute_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_revolute_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_small_leftgrip_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_small_leftgrip_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_small_leftgrip_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_small_rightgrip_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_small_rightgrip_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_small_rightgrip_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_big_leftgrip_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_big_leftgrip_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_big_leftgrip_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <transmission name="trans_scara_dualgrip_big_rightgrip_joint">
+        <type>transmission_interface/SimpleTransmission</type>
+        <joint name="scara_dualgrip_big_rightgrip_joint">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+        </joint>
+        <actuator name="scara_dualgrip_big_rightgrip_joint_motor">
+            <hardwareInterface>hardware_interface/PositionJointInterface</hardwareInterface>
+            <mechanicalReduction>1</mechanicalReduction>
+        </actuator>
+    </transmission>
+    <gazebo>
+        <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+            <robotNamespace>/</robotNamespace>
+        </plugin>
+    </gazebo>
+
+ <gazebo>
+   <plugin name="gazebo_grasp_fix" filename="libgazebo_grasp_fix.so">
+        <arm>
+           <arm_name>scara</arm_name>
+           <palm_link> scara_dualgrip_base  </palm_link>
+           <gripper_link> scara_dualgrip_big_leftgrip </gripper_link>
+           <gripper_link> scara_dualgrip_big_rightgrip </gripper_link>
+        </arm>
+        <arm>
+           <arm_name>scara_small</arm_name>
+           <palm_link> scara_dualgrip_revolute_link  </palm_link>
+           <gripper_link> scara_dualgrip_small_leftgrip </gripper_link>
+           <gripper_link> scara_dualgrip_small_rightgrip </gripper_link>
+        </arm>
+       <forces_angle_tolerance>100</forces_angle_tolerance>
+       <update_rate>4</update_rate>11
+       <grip_count_threshold>1</grip_count_threshold>
+       <max_grip_count>8</max_grip_count>
+       <release_tolerance>0.005</release_tolerance>
+       <disable_collisions_on_attach>true</disable_collisions_on_attach>
+       <contact_topic>__default_topic__</contact_topic>
+    </plugin>
+</gazebo> 
+<gazebo>
+  <gripper name="grasping">
+    <grasp_check>
+     <attach_steps>10</attach_steps>
+     <detach_steps>10</detach_steps>
+     <min_contact_count>1</min_contact_count>
+    </grasp_check>
+      <gripper_link>scara_dualgrip_big_leftgrip</gripper_link>
+      <gripper_link>scara_dualgrip_big_rightgrip</gripper_link>
+      <palm_link>scara_dualgrip_base</palm_link>
+  </gripper>
+</gazebo>
+
+</robot>

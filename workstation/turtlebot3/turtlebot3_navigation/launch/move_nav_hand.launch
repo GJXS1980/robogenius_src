@@ -1,0 +1,6 @@
+<launch>
+
+  <node pkg = "turtlebot3_navigation" type = "move_nav_hand.py" name = "move_nav_hand" output = "screen" />
+
+</launch>
+

@@ -1,0 +1,1 @@
+controller_joint_names: ['', 'agv_cobot_1_joint', 'agv_cobot_2_joint', 'agv_cobot_3_joint', 'agv_cobot_4_joint', 'agv_cobot_5_joint', 'agv_cobot_6_joint', 'agv_cobot_7_base', ]

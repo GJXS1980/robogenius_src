@@ -1,0 +1,37 @@
+controller_list:
+  - name: fake_arm_bgrip_controller
+    type: $(arg execution_type)
+    joints:
+      - scara_1_joint
+      - scara_2_joint
+      - scara_3_joint
+      - scara_4_joint
+      - scara_dualgrip_base_joint
+  - name: fake_arm_sgrip_controller
+    type: $(arg execution_type)
+    joints:
+      - scara_1_joint
+      - scara_2_joint
+      - scara_3_joint
+      - scara_4_joint
+      - scara_dualgrip_base_joint
+  - name: fake_big_grip_controller
+    type: $(arg execution_type)
+    joints:
+      - scara_dualgrip_big_leftgrip_joint
+      - scara_dualgrip_big_rightgrip_joint
+  - name: fake_small_grip_controller
+    type: $(arg execution_type)
+    joints:
+      - scara_dualgrip_revolute_joint
+      - scara_dualgrip_small_leftgrip_joint
+      - scara_dualgrip_small_rightgrip_joint
+initial:  # Define initial robot poses.
+  - group: arm_bgrip
+    pose: bgrip_home
+  - group: arm_sgrip
+    pose: sgrip_home
+  - group: big_grip
+    pose: bopen
+  - group: small_grip
+    pose: sopen
